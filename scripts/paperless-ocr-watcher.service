@@ -1,0 +1,13 @@
+[Unit]
+Description=Paperless OCR Watcher Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/paperless-ocr-pipeline
+ExecStart=/opt/paperless-ocr-pipeline/venv/bin/python /opt/paperless-ocr-pipeline/watcher.py
+Restart=always
+User=yourusername
+
+[Install]
+WantedBy=multi-user.target
