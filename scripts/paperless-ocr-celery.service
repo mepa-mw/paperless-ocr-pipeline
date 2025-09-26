@@ -1,0 +1,13 @@
+[Unit]
+Description=Paperless OCR Celery Worker
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/paperless-ocr-pipeline
+ExecStart=/opt/paperless-ocr-pipeline/venv/bin/celery -A background_worker.app worker --loglevel=info --concurrency=1
+Restart=always
+User=mepa
+
+[Install]
+WantedBy=multi-user.target
